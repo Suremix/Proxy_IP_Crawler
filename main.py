@@ -70,12 +70,13 @@ def save_ip_data_from_kuaidaili(ip_type, num_page, output_folder):
 
     # 如果文件不存在，则保存个新的
     # 如果已存在文件，则已文件的形式一行一行写进去
-    ip_data_df.to_csv(output_path, index=False, encoding='utf_8_sig')
+    ip_data_df.to_csv(output_path, index=False, encoding="utf_8_sig")
 
 
 if __name__ == "__main__":
-    save_ip_data_from_kuaidaili('open', 2, 'data')
-    save_ip_data_from_kuaidaili('anonymous', 2, 'data')
+    output_folder = ""
+    save_ip_data_from_kuaidaili("open", 2, output_folder)
+    save_ip_data_from_kuaidaili("anonymous", 2, output_folder)
 
 
 
