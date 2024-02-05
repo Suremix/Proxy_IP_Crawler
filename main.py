@@ -16,11 +16,11 @@ def get_ip_data_df_from_url(url):
 
     # 申请网页响应，先默认肯定能接通
     respone = requests.get(url, headers=headers)
-    # print("State_Code:", respone.status_code)
+    print(url + "  State_Code:", respone.status_code)
 
     # 从响应里获取html源码
-    url = etree.HTML(respone.text)
-    tr_list = url.xpath('//table[@class="table table-b table-bordered table-striped"]/tbody/tr')
+    html = etree.HTML(respone.text)
+    tr_list = html.xpath('//table[@class="table table-b table-bordered table-striped"]/tbody/tr')
     data_title_list = ["IP", "PORT", "匿名度", "类型", "位置", "最后验证时间"]
 
     # 获取从源码里获取特定的数据，存入df并返回
@@ -60,8 +60,7 @@ def save_ip_data_from_kuaidaili(ip_type, num_page, output_folder, sleep_time=2):
         else:
             ip_data_df = pd.concat([ip_data_df, ip_data_df_page_i], axis=0)
 
-        # 进度条，以及设置每次翻页的间隔时间防止被发现
-        print(url_page_i + " Done!")
+        # 设置每次翻页的间隔时间防止被发现
         time.sleep(sleep_time)
 
     # 组合文件夹名和文件名，这里不加一个str的话pycharm会警告，不知道为啥
@@ -74,6 +73,7 @@ def save_ip_data_from_kuaidaili(ip_type, num_page, output_folder, sleep_time=2):
 
 
 if __name__ == "__main__":
+    print(time.asctime())
     output_folder = "/root/MyData/"
     save_ip_data_from_kuaidaili("open", 2, output_folder)
     save_ip_data_from_kuaidaili("anonymous", 2, output_folder)
