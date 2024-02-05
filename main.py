@@ -35,7 +35,7 @@ def get_ip_data_df_from_url(url):
     return ip_data_df
 
 
-def save_ip_data_from_kuaidaili(ip_type, num_page, output_folder):
+def save_ip_data_from_kuaidaili(ip_type, num_page, output_folder, sleep_time=2):
     # 根据需求设置好需要进行爬虫的url以及爬取的页数
     if ip_type == "open":
         url = "https://www.kuaidaili.com/free/inha/"
@@ -62,7 +62,7 @@ def save_ip_data_from_kuaidaili(ip_type, num_page, output_folder):
 
         # 进度条，以及设置每次翻页的间隔时间防止被发现
         print(url_page_i + " Done!")
-        time.sleep(2)
+        time.sleep(sleep_time)
 
     # 组合文件夹名和文件名，这里不加一个str的话pycharm会警告，不知道为啥
     file_name = "ip_" + ip_type + "_dataset.csv"
@@ -74,7 +74,7 @@ def save_ip_data_from_kuaidaili(ip_type, num_page, output_folder):
 
 
 if __name__ == "__main__":
-    output_folder = ""
+    output_folder = "/root/MyData/"
     save_ip_data_from_kuaidaili("open", 2, output_folder)
     save_ip_data_from_kuaidaili("anonymous", 2, output_folder)
 
