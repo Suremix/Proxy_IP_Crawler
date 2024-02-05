@@ -12,7 +12,7 @@ from lxml import etree
 def get_ip_data_df_from_url(url):
     # 设置headers
     user_agent = UserAgent()
-    headers = {'User-Agent': user_agent.chrome}
+    headers = {"User-Agent": user_agent.chrome}
 
     # 申请网页响应，先默认肯定能接通
     respone = requests.get(url, headers=headers)
