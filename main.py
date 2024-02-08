@@ -74,9 +74,9 @@ def save_ip_data_from_kuaidaili(ip_type, num_page, output_folder, sleep_time=2):
 
 if __name__ == "__main__":
     print(time.asctime())
-    output_folder = "/root/MyData/"
-    save_ip_data_from_kuaidaili("open", 2, output_folder)
-    save_ip_data_from_kuaidaili("anonymous", 2, output_folder)
+    output_folder = "/root/myData/"
+    save_ip_data_from_kuaidaili("open", 25, output_folder)
+    save_ip_data_from_kuaidaili("anonymous", 25, output_folder)
 
 
 
